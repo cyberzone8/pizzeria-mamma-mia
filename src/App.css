@@ -1,0 +1,56 @@
+#root {
+  max-width: 100%; /* Permite que ocupe todo el ancho */
+  margin: 0 auto;
+  padding: 0rem;
+  text-align: center;
+}
+
+body {
+  background-color: #f9f9f9; /* Color claro general */
+  font-family: 'Roboto', sans-serif; /* Fuente consistente */
+}
+
+main {
+  display: flex; /* Flexbox para alinear las tarjetas */
+  flex-wrap: wrap; /* Permite que las tarjetas pasen a una nueva fila si es necesario */
+  gap: 2rem; /* Espaciado entre las tarjetas */
+  justify-content: center; /* Centra las tarjetas */
+  padding: 2rem;
+  max-width: 1200px; /* Puedes ajustarlo según tu diseño */
+  margin: 0 auto; /* Centra el contenido horizontalmente */
+}
+
+.card {
+  flex: 1 1 calc(33.33% - 2rem); /* Ajusta para 3 columnas en pantallas grandes */
+  max-width: 300px; /* Limita el ancho de cada tarjeta */
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: left; /* Alinea el texto a la izquierda */
+}
+
+.card img {
+  width: 100%; /* Asegura que las imágenes cubran todo el ancho de la tarjeta */
+  height: auto;
+}
+
+.card h5, .card p, .card button {
+  margin: 0.5rem 0; /* Margen entre los elementos */
+}
+
+.card button {
+  width: 100%; /* Botones ocupan todo el ancho en dispositivos pequeños */
+  margin-top: 1rem;
+}
+
+.card button:hover {
+  background-color: #e0a800; /* Color más oscuro al pasar el ratón */
+}
+
+footer {
+  background-color: #212529; /* Color oscuro para el footer */
+  color: #ffc107;
+  text-align: center;
+  padding: 1rem;
+}

@@ -1,0 +1,24 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido principal */
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+:root {
+  --main-max-width: 1200px; /* Define un ancho máximo general */
+}
+
+#root, header, footer {
+  width: 100%; /* Que cubran todo el ancho */
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #242424;
+  color: #fff;
+}

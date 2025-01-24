@@ -1,0 +1,31 @@
+.header {
+    background-image: url('../assets/ImageHeader.jpg'); /* Cambia por la ruta correcta de tu imagen */
+    background-size: cover;
+    background-position: center;
+    height: 300px; /* Ajusta la altura según lo necesario */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white; /* Para texto blanco */
+    margin-bottom: 30px;
+}
+  
+.header-content {
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro semitransparente para contraste */
+    padding: 20px;
+    border: 2px solid #ffc107; /* Borde amarillo */
+    border-radius: 10px;
+    font-family: 'Arial', sans-serif;
+}
+
+.header-content h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra para el texto */
+}
+
+.header-content p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
