@@ -2,7 +2,7 @@
 
 Bienvenido a la documentación de la aplicación **Pizzería Mamma Mia**, una aplicación web desarrollada con **React** y **Vite**. Esta documentación te guiará a través de la estructura del proyecto, las tecnologías utilizadas y cómo puedes ejecutar y contribuir al desarrollo de la aplicación.
 
-## Estructura del Proyecto
+## Estructura del Proyecto Hito 1
 
 El proyecto está organizado de la siguiente manera:
 
@@ -49,6 +49,38 @@ pizzeria-mamma-mia/
 - **package.json**: Contiene las dependencias del proyecto y los scripts para ejecutar, construir y probar la aplicación.
 - **README.md**: Documentación del proyecto.
 - **vite.config.js**: Configuración de Vite para el desarrollo y la construcción de la aplicación.
+
+## Estructura del Proyecto Hito 2
+
+```bash
+pizzeria-mamma-mia/
+├── public/
+│   └── vite.svg
+├── src/
+│   ├── assets/
+│   │   ├── ImageHeader.jpg
+│   │   └── react.svg
+│   ├── components/
+│   │   ├── CardPizza.jsx
+│   │   ├── Footer.jsx
+│   │   ├── Header.css
+│   │   ├── Header.jsx
+│   │   ├── Home.jsx
+│   │   └── Navbar.jsx
+│   ├── pages/
+│   │   ├── LoginPage.jsx
+│   │   └── RegisterPage.jsx
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package.json
+├── README.md
+└── vite.config.js
+```
 
 ## Tecnologías Utilizadas
 

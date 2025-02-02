@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom'; // Importa Link
 
 const MyNavbar = () => {
   const total = 25000;
@@ -9,7 +10,7 @@ const MyNavbar = () => {
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
         {/* Logo y título */}
-        <Navbar.Brand href="#">
+        <Navbar.Brand as={Link} to="/"> {/* Usa Link para la navegación */}
           🍕 Pizzería Mamma Mía
         </Navbar.Brand>
 
@@ -19,16 +20,16 @@ const MyNavbar = () => {
         {/* Menú colapsable */}
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#">Home</Nav.Link>
+            <Nav.Link as={Link} to="/">Home</Nav.Link> {/* Usa Link para la navegación */}
             {token ? (
               <>
-                <Nav.Link href="#">🔓 Profile</Nav.Link>
-                <Nav.Link href="#">🔒 Logout</Nav.Link>
+                <Nav.Link as={Link} to="/profile">🔓 Profile</Nav.Link>
+                <Nav.Link as={Link} to="/logout">🔒 Logout</Nav.Link>
               </>
             ) : (
               <>
-                <Nav.Link href="#">🔐 Login</Nav.Link>
-                <Nav.Link href="#">🔐 Register</Nav.Link>
+                <Nav.Link as={Link} to="/login">🔐 Login</Nav.Link> {/* Usa Link para la navegación */}
+                <Nav.Link as={Link} to="/register">🔐 Register</Nav.Link> {/* Usa Link para la navegación */}
               </>
             )}
           </Nav>
@@ -36,9 +37,9 @@ const MyNavbar = () => {
           {/* Botón de Total */}
           <Button
             style={{
-              backgroundColor: 'transparent', // Fondo transparente para integrarse
-              borderColor: '#ffc107', // Borde amarillo
-              color: '#ffc107', // Texto amarillo
+              backgroundColor: 'transparent',
+              borderColor: '#ffc107',
+              color: '#ffc107',
               fontWeight: 'bold',
               transition: 'all 0.3s ease',
               borderRadius: '5px',
@@ -49,20 +50,6 @@ const MyNavbar = () => {
           </Button>
         </Navbar.Collapse>
       </Container>
-
-      {/* Estilos adicionales */}
-      <style>
-        {`
-          .total-button:hover {
-            background-color: #ffc107; /* Fondo amarillo en hover */
-            color: #000; /* Texto negro en hover */
-          }
-          .total-button:focus {
-            outline: none; /* Sin borde azul */
-            box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.5); /* Sombra amarilla */
-          }
-        `}
-      </style>
     </Navbar>
   );
 };
