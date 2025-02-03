@@ -1,56 +1,63 @@
+/* Contenedor principal */
 #root {
-  max-width: 100%; /* Permite que ocupe todo el ancho */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Asegura que cubra toda la altura de la pantalla */
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0rem;
-  text-align: center;
+  padding: 0;
 }
 
+/* Ajustar el body */
 body {
-  background-color: #f9f9f9; /* Color claro general */
-  font-family: 'Roboto', sans-serif; /* Fuente consistente */
+  background-color: #f9f9f9;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
 }
 
-main {
-  display: flex; /* Flexbox para alinear las tarjetas */
-  flex-wrap: wrap; /* Permite que las tarjetas pasen a una nueva fila si es necesario */
-  gap: 2rem; /* Espaciado entre las tarjetas */
-  justify-content: center; /* Centra las tarjetas */
+/* Contenedor de Login y Registro */
+.auth-container {
+  flex: 1; /* Permite que el contenido ocupe el espacio disponible */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra verticalmente */
+  align-items: center; /* Centra horizontalmente */
   padding: 2rem;
-  max-width: 1200px; /* Puedes ajustarlo según tu diseño */
-  margin: 0 auto; /* Centra el contenido horizontalmente */
 }
 
-.card {
-  flex: 1 1 calc(33.33% - 2rem); /* Ajusta para 3 columnas en pantallas grandes */
-  max-width: 300px; /* Limita el ancho de cada tarjeta */
-  background: #fff;
+/* Formulario de autenticación */
+.auth-form {
+  width: 100%;
+  max-width: 400px; /* Ancho limitado para una mejor apariencia */
+  background: white;
+  padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  text-align: left; /* Alinea el texto a la izquierda */
+  text-align: left;
 }
 
-.card img {
-  width: 100%; /* Asegura que las imágenes cubran todo el ancho de la tarjeta */
-  height: auto;
+/* Inputs y botones */
+.auth-form input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-.card h5, .card p, .card button {
-  margin: 0.5rem 0; /* Margen entre los elementos */
-}
-
-.card button {
-  width: 100%; /* Botones ocupan todo el ancho en dispositivos pequeños */
+.auth-form button {
+  width: 100%;
   margin-top: 1rem;
 }
 
-.card button:hover {
-  background-color: #e0a800; /* Color más oscuro al pasar el ratón */
-}
-
+/* Footer Fijo en la parte inferior */
 footer {
-  background-color: #212529; /* Color oscuro para el footer */
+  background-color: #212529;
   color: #ffc107;
   text-align: center;
   padding: 1rem;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }

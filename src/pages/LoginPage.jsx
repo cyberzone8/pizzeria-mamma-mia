@@ -21,7 +21,7 @@ const LoginPage = () => {
 
     // Enviar datos al backend
     try {
-      const response = await fetch('http://localhost:3001/users');
+      const response = await fetch('http://localhost:5000/users');
       const users = await response.json();
 
       const user = users.find((u) => u.email === email && u.password === password);

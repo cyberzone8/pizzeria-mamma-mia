@@ -10,17 +10,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const App = () => {
   return (
     <Router>
-      <div>
+      <div className="d-flex flex-column min-vh-100"> {/* Aplica estilos de Bootstrap */}
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} /> {/* Ruta para la página principal */}
-          <Route path="/login" element={<LoginPage />} /> {/* Ruta para el login */}
-          <Route path="/register" element={<RegisterPage />} /> {/* Ruta para el registro */}
-        </Routes>
+        <div className="flex-grow-1"> {/* Hace que el contenido principal crezca y empuje el footer hacia abajo */}
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+          </Routes>
+        </div>
         <Footer />
       </div>
     </Router>
   );
 };
+
 
 export default App;
