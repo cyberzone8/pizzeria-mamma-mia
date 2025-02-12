@@ -13,6 +13,7 @@ const LoginPage = () => {
       setError('Todos los campos son obligatorios.');
       return;
     }
+    
 
     if (password.length < 6) {
       setError('La contraseña debe tener al menos 6 caracteres.');
