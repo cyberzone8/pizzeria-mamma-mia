@@ -20,7 +20,7 @@ const MyNavbar = () => {
         {/* Menú colapsable */}
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/">Home</Nav.Link> {/* Link a Home */}
+            <Nav.Link as={Link} to="/">Home</Nav.Link> {/* Usa Link para la navegación */}
             {token ? (
               <>
                 <Nav.Link as={Link} to="/profile">🔓 Profile</Nav.Link>
@@ -28,12 +28,10 @@ const MyNavbar = () => {
               </>
             ) : (
               <>
-                <Nav.Link as={Link} to="/login">🔐 Login</Nav.Link> {/* Link a Login */}
-                <Nav.Link as={Link} to="/register">🔐 Register</Nav.Link> {/* Link a Register */}
+                <Nav.Link as={Link} to="/login">🔐 Login</Nav.Link> {/* Usa Link para la navegación */}
+                <Nav.Link as={Link} to="/register">🔐 Register</Nav.Link> {/* Usa Link para la navegación */}
               </>
             )}
-            {/* Link al carrito */}
-            <Nav.Link as={Link} to="/cart">🛒 Carrito</Nav.Link>
           </Nav>
 
           {/* Botón de Total */}
