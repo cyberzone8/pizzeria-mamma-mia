@@ -82,6 +82,51 @@ pizzeria-mamma-mia/
 └── vite.config.js
 ```
 
+## Estructura del Proyecto Hito 3
+
+```bash
+pizzeria-mamma-mia/
+├── public/
+│   └── vite.svg
+├── src/
+│   ├── assets/
+│   │   ├── ImageHeader.jpg
+│   │   └── react.svg
+│   ├── components/
+│   │   ├── CardPizza.jsx
+│   │   ├── Cart.jsx
+│   │   ├── Footer.jsx
+│   │   ├── Header.css
+│   │   ├── Header.jsx
+│   │   ├── Home.jsx
+│   │   ├── Navbar.jsx
+│   │   └── RootLayout.jsx
+│   ├── context/
+│   │   └── CartContext.jsx
+│   ├── data/
+│   │   └── pizzas.js
+│   ├── pages/
+│   │   ├── LoginPage.jsx
+│   │   └── RegisterPage.jsx
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package.json
+├── README.md
+└── vite.config.js
+```
+
+### Nuevos archivos añadidos en el Hito 3
+
+- **components/Cart.jsx**: Componente que muestra los productos añadidos al carrito de compras.
+- **components/RootLayout.jsx**: Componente que define el layout principal con navegación y footer para todas las páginas.
+- **context/CartContext.jsx**: Implementación de Context API para gestionar el estado del carrito de compras en toda la aplicación.
+- **data/pizzas.js**: Archivo que contiene los datos de las pizzas disponibles.
+
 ## Tecnologías Utilizadas
 
 - **React**: Biblioteca de JavaScript para construir interfaces de usuario.
@@ -89,6 +134,8 @@ pizzeria-mamma-mia/
 - **Bootstrap**: Framework CSS para diseñar interfaces web responsivas y modernas.
 - **ESLint**: Herramienta de linting para mantener un código limpio y consistente.
 - **React-Bootstrap**: Librería que integra Bootstrap con React.
+- **React Router (v7)**: Biblioteca para la navegación y enrutamiento en la aplicación.
+- **Context API**: API de React para gestionar el estado global de la aplicación.
 
 ## Cómo Ejecutar la Aplicación
 
@@ -147,11 +194,44 @@ El componente **Home** es la página principal de la aplicación. Muestra una li
 
 ### `CardPizza.jsx`
 
-El componente **CardPizza** representa una tarjeta que muestra la información de una pizza, incluyendo su nombre, precio, ingredientes y una imagen.
+El componente **CardPizza** representa una tarjeta que muestra la información de una pizza, incluyendo su nombre, precio, ingredientes y una imagen. Incluye botones para ver más detalles y añadir al carrito.
 
 ### `Footer.jsx`
 
 El componente **Footer** es el pie de página de la aplicación, que muestra un mensaje de derechos de autor.
+
+### `Cart.jsx`
+
+El componente **Cart** muestra los productos añadidos al carrito, permite modificar cantidades, eliminar productos y muestra el total de la compra.
+
+### `RootLayout.jsx`
+
+El componente **RootLayout** define la estructura base de todas las páginas, incluyendo el Navbar y Footer, y utiliza el componente Outlet de React Router para renderizar el contenido específico de cada ruta.
+
+## Context API
+
+### `CartContext.jsx`
+
+Este archivo implementa el Context API de React para gestionar el estado del carrito de compras:
+
+- **CartProvider**: Componente que envuelve la aplicación y proporciona el contexto del carrito.
+- **useCart**: Hook personalizado para acceder al contexto del carrito desde cualquier componente.
+
+Funciones principales:
+
+- **addToCart**: Añade productos al carrito.
+- **updateQuantity**: Actualiza la cantidad de un producto en el carrito.
+- **removeFromCart**: Elimina un producto del carrito.
+- **getTotal**: Calcula el total de la compra.
+
+## Rutas de la Aplicación
+
+La aplicación utiliza React Router v7 para la navegación:
+
+- **/** - Página principal con listado de pizzas
+- **/login** - Página de inicio de sesión
+- **/register** - Página de registro
+- **/cart** - Página del carrito de compras
 
 ## Estilos
 

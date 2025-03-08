@@ -1,77 +1,98 @@
-import React, { useState } from 'react';
-import { pizzas } from '../data/pizzas';
-import { Card, Button } from 'react-bootstrap';
+import React from 'react';
+import { Card, Button, Container, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 const Cart = () => {
-  // Inicializamos con algunas pizzas para pruebas
-  const initialCart = [
-    { ...pizzas[0], quantity: 1 },
-    { ...pizzas[1], quantity: 1 }
-  ];
-
-  const [cart, setCart] = useState(initialCart);
-
-  // Función para actualizar cantidades
-  const updateQuantity = (id, change) => {
-    const updatedCart = cart.map(item =>
-      item.id === id ? { ...item, quantity: Math.max(0, item.quantity + change) } : item
-    ).filter(item => item.quantity > 0);
-
-    setCart(updatedCart);
-  };
-
-  // Calcular total
-  const calculateTotal = () => {
-    return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-  };
+  const { cart, updateQuantity, removeFromCart, getTotal } = useCart();
 
   return (
-    <div className="container my-4">
-      <h2 className="mb-4">Detalles del pedido:</h2>
+    <Container className="py-5">
+      <h2 className="mb-4">🛒 Carrito de Compras</h2>
+      
       {cart.length === 0 ? (
-        <p>El carrito está vacío.</p>
+        <div className="text-center my-5">
+          <h3>Tu carrito está vacío</h3>
+          <p>¡Añade algunas deliciosas pizzas y vuelve aquí!</p>
+          <Button 
+            variant="warning" 
+            as={Link} 
+            to="/" 
+            className="mt-3"
+          >
+            Volver al menú
+          </Button>
+        </div>
       ) : (
         <>
           {cart.map((pizza) => (
-            <div key={pizza.id} className="d-flex align-items-center mb-3 border p-3 rounded">
-              <img 
-                src={pizza.img} 
-                alt={pizza.name}
-                style={{ width: '100px', height: '100px', objectFit: 'cover' }}
-                className="me-4 rounded"
-              />
-              <div className="flex-grow-1">
-                <h5>{pizza.name}</h5>
-                <p className="mb-2">${pizza.price.toLocaleString()}</p>
-                <div className="d-flex align-items-center">
-                  <Button 
-                    variant="outline-danger" 
-                    size="sm"
-                    onClick={() => updateQuantity(pizza.id, -1)}
-                  >
-                    -
-                  </Button>
-                  <span className="mx-3">{pizza.quantity}</span>
-                  <Button 
-                    variant="outline-success" 
-                    size="sm"
-                    onClick={() => updateQuantity(pizza.id, 1)}
-                  >
-                    +
-                  </Button>
-                </div>
-              </div>
-            </div>
+            <Card className="mb-3 shadow-sm" key={pizza.id}>
+              <Card.Body>
+                <Row className="align-items-center">
+                  <Col xs={12} md={2}>
+                    <img 
+                      src={pizza.img} 
+                      alt={pizza.name} 
+                      className="img-fluid rounded"
+                      style={{ maxHeight: '80px', objectFit: 'cover' }}
+                    />
+                  </Col>
+                  <Col xs={12} md={3}>
+                    <Card.Title>{pizza.name}</Card.Title>
+                  </Col>
+                  <Col xs={6} md={2} className="text-center">
+                    <Card.Text>Precio: ${pizza.price.toLocaleString()}</Card.Text>
+                  </Col>
+                  <Col xs={6} md={2} className="text-center">
+                    <div className="d-flex justify-content-center align-items-center">
+                      <Button 
+                        variant="outline-danger" 
+                        size="sm"
+                        onClick={() => updateQuantity(pizza.id, pizza.quantity - 1)}
+                      >
+                        -
+                      </Button>
+                      <span className="mx-2">{pizza.quantity}</span>
+                      <Button 
+                        variant="outline-success" 
+                        size="sm"
+                        onClick={() => updateQuantity(pizza.id, pizza.quantity + 1)}
+                      >
+                        +
+                      </Button>
+                    </div>
+                  </Col>
+                  <Col xs={6} md={2} className="text-center">
+                    <Card.Text>Subtotal: ${(pizza.price * pizza.quantity).toLocaleString()}</Card.Text>
+                  </Col>
+                  <Col xs={6} md={1} className="text-end">
+                    <Button 
+                      variant="danger" 
+                      size="sm"
+                      onClick={() => removeFromCart(pizza.id)}
+                    >
+                      X
+                    </Button>
+                  </Col>
+                </Row>
+              </Card.Body>
+            </Card>
           ))}
-          <div className="text-end mt-4">
-            <h3 className="mb-3">Total: ${calculateTotal().toLocaleString()}</h3>
-            <Button variant="dark" size="lg">
-              Pagar
-            </Button>
+          
+          <div className="d-flex justify-content-between align-items-center mt-4">
+            <h3>Total: ${getTotal().toLocaleString()}</h3>
+            <div>
+              <Button variant="outline-secondary" className="me-2" as={Link} to="/">
+                Seguir comprando
+              </Button>
+              <Button variant="warning" className="text-white">
+                Proceder al pago
+              </Button>
+            </div>
           </div>
         </>
       )}
-    </div>
+    </Container>
   );
 };
 

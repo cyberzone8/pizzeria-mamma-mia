@@ -9,8 +9,9 @@ const Home = () => {
       <Header />
       <div className="row mx-0 justify-content-center">
         {pizzas.map((pizza) => (
-          <div className="col-12 col-sm-6 col-md-4 mb-4 px-3" key={pizza.id}>
+          <div className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 px-3" key={pizza.id}>
             <CardPizza
+              id={pizza.id}
               name={pizza.name}
               price={pizza.price}
               ingredients={pizza.ingredients}

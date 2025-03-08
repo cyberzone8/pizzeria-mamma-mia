@@ -1,16 +1,18 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom'; // Importa Link
+import { useCart } from '../context/CartContext';
 
 const MyNavbar = () => {
-  const total = 25000;
-  const token = false;
+  const { getTotal } = useCart();
+  const token = false; // Esto vendría de tu sistema de autenticación
+  const navigate = useNavigate();
 
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
         {/* Logo y título */}
-        <Navbar.Brand as={Link} to="/"> {/* Usa Link para la navegación */}
+        <Navbar.Brand as={Link} to="/">
           🍕 Pizzería Mamma Mía
         </Navbar.Brand>
 
@@ -20,24 +22,23 @@ const MyNavbar = () => {
         {/* Menú colapsable */}
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/">Home</Nav.Link> {/* Link a Home */}
+            <Nav.Link as={Link} to="/">Home</Nav.Link>
             {token ? (
               <>
                 <Nav.Link as={Link} to="/profile">🔓 Profile</Nav.Link>
-                <Nav.Link as={Link} to="/logout">🔒 Logout</Nav.Link>
+                <Nav.Link onClick={() => { /* logout logic */ }}>🔒 Logout</Nav.Link>
               </>
             ) : (
               <>
-                <Nav.Link as={Link} to="/login">🔐 Login</Nav.Link> {/* Link a Login */}
-                <Nav.Link as={Link} to="/register">🔐 Register</Nav.Link> {/* Link a Register */}
+                <Nav.Link as={Link} to="/login">🔐 Login</Nav.Link>
+                <Nav.Link as={Link} to="/register">🔐 Register</Nav.Link>
               </>
             )}
-            {/* Link al carrito */}
-            <Nav.Link as={Link} to="/cart">🛒 Carrito</Nav.Link>
           </Nav>
 
           {/* Botón de Total */}
           <Button
+            onClick={() => navigate('/cart')}
             style={{
               backgroundColor: 'transparent',
               borderColor: '#ffc107',
@@ -48,10 +49,24 @@ const MyNavbar = () => {
             }}
             className="ms-2 total-button"
           >
-            🛒 Total: ${total.toLocaleString()}
+            🛒 Total: ${getTotal().toLocaleString()}
           </Button>
         </Navbar.Collapse>
       </Container>
+
+      {/* Estilos adicionales */}
+      <style>
+        {`
+          .total-button:hover {
+            background-color: #ffc107;
+            color: #000;
+          }
+          .total-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.5);
+          }
+        `}
+      </style>
     </Navbar>
   );
 };
